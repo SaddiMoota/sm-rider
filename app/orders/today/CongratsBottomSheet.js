@@ -26,12 +26,12 @@ export default function CongratsBottomSheet({ open, totalOrders, onClose, onConf
           >
             Yes, Close Today's Job
           </button>
-          <button
+          {/* <button
             className="w-full py-3 mt-2 rounded-lg bg-gray-100 text-gray-700 font-medium text-base border border-gray-200 hover:bg-gray-200 transition"
             onClick={onClose}
           >
             No
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

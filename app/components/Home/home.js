@@ -13,17 +13,6 @@ const HomeComponent = () => {
   // useEffect(() => { setOrdersAssigned(true); }, []);
   return (
     <div className="flex flex-col gap-7 px-2 pt-6 bg-gradient-to-b from-green-50 to-white min-h-screen">
-      {/* Header Section */}
-      <div className="flex flex-col items-center gap-1 mb-2">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-yellow-400 rounded" />
-          <span className="text-gray-800 text-xl font-bold tracking-wide">Today - 8 April 2025</span>
-        </div>
-        <div className="flex items-center gap-2 bg-yellow-50 px-4 py-2 rounded-full mt-2 shadow-sm">
-          <Info size={22} className="text-yellow-600" />
-          <span className="text-yellow-900 text-base font-semibold tracking-wide">Clockin daily by 11 am</span>
-        </div>
-      </div>
 
       {/* Rider Card Modern */}
       <div className="relative bg-white border-2 border-green-100 rounded-lg shadow-lg p-6 flex flex-col items-center gap-3 overflow-hidden">
@@ -63,12 +52,12 @@ const HomeComponent = () => {
       ) : (
         <div className="bg-green-50 rounded-lg shadow-lg p-8 flex flex-col items-center gap-4 max-w-md mx-auto border border-green-100">
           <div className="text-green-900 text-2xl font-bold mb-2">Orders Assigned!</div>
-          <div className="text-gray-700 text-base font-medium mb-2">You have new orders assigned. Please start your job to begin deliveries.</div>
+          <div className="text-gray-700 text-base font-medium mb-2 text-center">You have new orders assigned. Please start your job to begin deliveries.</div>
           <button
-            className="px-8 py-3 bg-smgreen-900 text-white rounded-lg font-medium shadow hover:bg-green-800 text-lg"
+            className="px-8 py-3 bg-smgreen-900 text-white rounded-full font-medium shadow hover:bg-green-800 text-lg"
             onClick={() => router.push('/orders/today')}
           >
-            Start Job
+            View Today's Orders
           </button>
         </div>
       )}

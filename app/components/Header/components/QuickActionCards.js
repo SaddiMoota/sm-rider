@@ -7,7 +7,7 @@ const QuickActionCards = ({ onCardClick }) => {
   const router = useRouter();
   const quickActions = [
     { icon: Home, label: "Home", href: "/home" },
-    { icon: User, label: "Account", href: "/my-account" },
+    { icon: User, label: "Today's Orders", href: "/orders/today" },
     { icon: ShoppingBag, label: "My Jobs", href: "/my-jobs" }
   ];
 
@@ -29,7 +29,7 @@ const QuickActionCards = ({ onCardClick }) => {
         return (
           <div 
             key={action.label}
-            className="bg-white/90 rounded p-5 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-white hover:-translate-y-0.5 hover:shadow-xl"
+            className="bg-white/90 rounded p-5 flex flex-col items-center text-center gap-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-white hover:-translate-y-0.5 hover:shadow-xl"
             onClick={() => handleClick(action.href)}
           >
             <IconComponent size={24} className="text-smgreen-900" />

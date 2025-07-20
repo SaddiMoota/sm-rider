@@ -1,8 +1,8 @@
 "use client";
 
 import Layout from "@/app/components/Layout/layout";
-import React, { useState } from "react";
-import { Search, MapPin } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Search, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 // Dummy data for today's orders
@@ -17,18 +17,6 @@ const orders = [
   { id: 6, orderNumber: "SM-080725-007", name: "Rahul Verma", delivered: false },
   { id: 7, orderNumber: "SM-080725-008", name: "Sneha Reddy", delivered: false },
   { id: 8, orderNumber: "SM-080725-009", name: "Vikram Singh", delivered: false },
-  { id: 9, orderNumber: "SM-080725-010", name: "Meena Kumari", delivered: false },
-  { id: 10, orderNumber: "SM-080725-011", name: "Arjun Patel", delivered: false },
-  { id: 11, orderNumber: "SM-080725-012", name: "Lakshmi Nair", delivered: false },
-  { id: 12, orderNumber: "SM-080725-013", name: "Ravi Teja", delivered: false },
-  { id: 13, orderNumber: "SM-080725-014", name: "Sunita Rao", delivered: false },
-  { id: 14, orderNumber: "SM-080725-015", name: "Kiran Kumar", delivered: false },
-  { id: 15, orderNumber: "SM-080725-016", name: "Deepa Joshi", delivered: false },
-  { id: 16, orderNumber: "SM-080725-017", name: "Manoj Das", delivered: false },
-  { id: 17, orderNumber: "SM-080725-018", name: "Asha Menon", delivered: false },
-  { id: 18, orderNumber: "SM-080725-019", name: "Suresh Babu", delivered: false },
-  { id: 19, orderNumber: "SM-080725-020", name: "Geeta Rani", delivered: false },
-  { id: 20, orderNumber: "SM-080725-021", name: "Naveen Chandra", delivered: false },
 ];
 
 
@@ -36,6 +24,9 @@ const orders = [
 
 import CongratsBottomSheet from "./CongratsBottomSheet";
 import DeliveredSwitch from "./DeliveredSwitch";
+import SwipableButton from "./SwipeToStartJob";
+
+
 
 
 const TodayOrdersPage = () => {
@@ -43,6 +34,9 @@ const TodayOrdersPage = () => {
   const [orderList, setOrderList] = useState(orders.map(o => ({ ...o, deliveredTime: null })));
   const [showCongrats, setShowCongrats] = useState(false);
   const [jobClosed, setJobClosed] = useState(false);
+  const [jobStarted, setJobStarted] = useState(false);
+  const [showSwipeButton, setShowSwipeButton] = useState(true);
+
 
   const handleDeliveredConfirm = (id) => {
     const now = new Date();
@@ -65,21 +59,33 @@ const TodayOrdersPage = () => {
       order.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const today = new Date().toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  // const today = new Date().toLocaleDateString("en-GB", {
+  //   day: "numeric",
+  //   month: "long",
+  //   year: "numeric",
+  // });
 
   return (
     <Layout>
     <div className="flex flex-col gap-5 px-4 py-6">
       <div className="text-2xl font-bold text-green-900">Today's Orders</div>
       <div className="flex items-center justify-between">
-        <div className="text-base text-gray-700 font-semibold">Date: {today}</div>
-        <div className="text-base text-green-700 font-semibold">Total Orders: {orderList.length}</div>
+        <div className="text-base text-gray-700 font-medium">Total Orders: <span className="text-blue-600 text-lg">{orderList.length}</span></div>
+        <div className="text-base text-gray-700 font-medium">Delivered: <span className="text-smgreen-600 text-lg">{orderList.length}</span></div>
       </div>
+        {showSwipeButton && (
+          <SwipableButton
+            text="Swipe to start job"
+            confirmText="Job Started"
+            onConfirm={() => {
+              setJobStarted(true);
+              setTimeout(() => setShowSwipeButton(false), 800);
+            }}
+          />
+        )}
+
       {/* Drop Location Info Card */}
+      <div className={`flex flex-col gap-5 ${jobStarted ? "blur-none" : "blur-xs pointer-events-none"}`}>
       <Link href={DROP_LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer" title="Open location in maps" className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg px-4 py-3 shadow-sm">
         <MapPin size={28} className="text-green-700"  />
         <div className="flex flex-col">
@@ -145,6 +151,7 @@ const TodayOrdersPage = () => {
       onClose={() => setShowCongrats(false)}
       onConfirm={() => { setJobClosed(true); setShowCongrats(false); }}
     />
+    </div>
     {/* Optionally, you can show a message or redirect if jobClosed is true */}
     </div>
     </Layout>
