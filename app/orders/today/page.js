@@ -102,7 +102,7 @@ const TodayOrdersPage = () => {
               </tr>
             ) : (
               filteredOrders.map((order, idx) => (
-                <tr key={order.id} className="border-b last:border-b-0">
+                <tr key={order.id} className="border-b border-gray-200 last:border-b-0">
                   <td className="py-4 px-3 align-middle text-gray-900 text-sm font-medium">{idx + 1}</td>
                   <td className="py-4 px-3 align-middle">
                     <div className="flex flex-col gap-1">
