@@ -12,6 +12,23 @@ const orders = [
   { id: 1, orderNumber: "SM-080725-002", name: "David Sandy", delivered: false },
   { id: 2, orderNumber: "SM-080725-003", name: "Prem Sagar Krishna", delivered: false },
   { id: 3, orderNumber: "SM-080725-004", name: "Sowjanya D", delivered: false },
+  { id: 4, orderNumber: "SM-080725-005", name: "Anil Kumar", delivered: false },
+  { id: 5, orderNumber: "SM-080725-006", name: "Priya Sharma", delivered: false },
+  { id: 6, orderNumber: "SM-080725-007", name: "Rahul Verma", delivered: false },
+  { id: 7, orderNumber: "SM-080725-008", name: "Sneha Reddy", delivered: false },
+  { id: 8, orderNumber: "SM-080725-009", name: "Vikram Singh", delivered: false },
+  { id: 9, orderNumber: "SM-080725-010", name: "Meena Kumari", delivered: false },
+  { id: 10, orderNumber: "SM-080725-011", name: "Arjun Patel", delivered: false },
+  { id: 11, orderNumber: "SM-080725-012", name: "Lakshmi Nair", delivered: false },
+  { id: 12, orderNumber: "SM-080725-013", name: "Ravi Teja", delivered: false },
+  { id: 13, orderNumber: "SM-080725-014", name: "Sunita Rao", delivered: false },
+  { id: 14, orderNumber: "SM-080725-015", name: "Kiran Kumar", delivered: false },
+  { id: 15, orderNumber: "SM-080725-016", name: "Deepa Joshi", delivered: false },
+  { id: 16, orderNumber: "SM-080725-017", name: "Manoj Das", delivered: false },
+  { id: 17, orderNumber: "SM-080725-018", name: "Asha Menon", delivered: false },
+  { id: 18, orderNumber: "SM-080725-019", name: "Suresh Babu", delivered: false },
+  { id: 19, orderNumber: "SM-080725-020", name: "Geeta Rani", delivered: false },
+  { id: 20, orderNumber: "SM-080725-021", name: "Naveen Chandra", delivered: false },
 ];
 
 
