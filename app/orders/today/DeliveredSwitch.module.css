@@ -1,0 +1,14 @@
+.animate-slow-slideup {
+  animation: slow-slideup 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slow-slideup {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

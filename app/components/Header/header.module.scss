@@ -1,0 +1,395 @@
+/* Header Component Styles */
+.header {
+  background: linear-gradient(135deg, #0b622f 0%, #05903b 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 80px;
+  transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    height: 75px;
+  }
+
+  &.scrolled {
+    background: rgba(11, 98, 47, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+  
+  &:hover {
+    color: #fecc00;
+    transform: translateY(-1px);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fecc00;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/* Right Section */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+}
+
+/* Login Button */
+.loginBtn {
+  background: transparent;
+  border: 2px solid #fecc00;
+  color: #fecc00;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  &:hover {
+    background: #fecc00;
+    color: #0b622f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 204, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  position: relative;
+  
+  span {
+    background: #fecc00;
+    height: 3px;
+    width: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    
+    &:nth-child(1) {
+      position: absolute;
+      top: 0;
+    }
+    
+    &:nth-child(2) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:nth-child(3) {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  
+  &.hamburgerOpen {
+    span {
+      background: #0b622f;
+      
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+  }
+}
+
+/* Mobile Menu Overlay */
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #fecc00 0%, #f5c500 100%);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  overflow-y: auto;
+  
+  &.overlayOpen {
+    transform: translateX(0);
+  }
+  
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+/* Mobile Header */
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mobileLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileLogoIcon {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileLogoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileBrandName {
+  color: #0b622f;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mobileBrandDomain {
+  color: rgba(11, 98, 47, 0.7);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: #0b622f;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: rgba(11, 98, 47, 0.1);
+  }
+}
+
+/* Quick Action Cards */
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+}
+
+.actionCard {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  svg {
+    color: #0b622f;
+  }
+  
+  span {
+    color: #0b622f;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  padding: 0 20px 40px;
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mobileNavLink {
+  color: #0b622f;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(11, 98, 47, 0.1);
+  transition: all 0.3s ease;
+  display: block;
+  
+  &:hover {
+    color: #05903b;
+    padding-left: 10px;
+  }
+  
+  &.signoutLink {
+    color: #dc2626;
+    border-bottom: none;
+    margin-top: 10px;
+    
+    &:hover {
+      color: #b91c1c;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .logoIcon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .loginBtn {
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+  
+  .hamburger {
+    width: 20px;
+    height: 16px;
+  }
+  
+  .quickActions {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 20px 15px;
+  }
+  
+  .actionCard {
+    padding: 15px 10px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    span {
+      font-size: 12px;
+    }
+  }
+}
