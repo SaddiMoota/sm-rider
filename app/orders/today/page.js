@@ -36,6 +36,9 @@ const TodayOrdersPage = () => {
   const [jobClosed, setJobClosed] = useState(false);
   const [jobStarted, setJobStarted] = useState(false);
   const [showSwipeButton, setShowSwipeButton] = useState(true);
+  const [showReadyModal, setShowReadyModal] = useState(false);
+  const [readyConfirmed, setReadyConfirmed] = useState(false);
+  const [showReadyButton, setShowReadyButton] = useState(true);
 
 
   const handleDeliveredConfirm = (id) => {
@@ -83,9 +86,47 @@ const TodayOrdersPage = () => {
             }}
           />
         )}
+        {!showSwipeButton && !jobClosed && (
+          <>
+            {showReadyButton && (
+              <button
+                className="w-full mt-2 text-lg border-2 px-4 py-3 rounded-full font-medium transition-all shadow active:scale-95 z-10 border-blue-600 text-white bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 cursor-pointer"
+                onClick={() => setShowReadyModal(true)}
+              >
+                Ready to deliver
+              </button>
+            )}
+            {showReadyModal && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-3">
+                <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex flex-col">
+                  <div className="text-lg font-semibold text-blue-700 mb-2">Are you at the location for delivery of the orders?</div>
+                  <div className="text-base text-gray-600 mb-5">Please confirm you are ready to deliver.</div>
+                  <div className="flex gap-4 w-full justify-center">
+                    <button
+                      className="px-4 py-3 flex-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium cursor-pointer"
+                      onClick={() => setShowReadyModal(false)}
+                    >
+                      No
+                    </button>
+                    <button
+                      className="px-4 py-3 flex-1 rounded bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer"
+                      onClick={() => {
+                        setShowReadyModal(false);
+                        setReadyConfirmed(true);
+                        setTimeout(() => setShowReadyButton(false), 800);
+                      }}
+                    >
+                      Yes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
 
       {/* Drop Location Info Card */}
-      <div className={`flex flex-col gap-5 ${jobStarted ? "blur-none" : "blur-xs pointer-events-none"}`}>
+      <div className={`flex flex-col gap-5 ${readyConfirmed ? "" : "blur-xs pointer-events-none"}`}>
       <Link href={DROP_LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer" title="Open location in maps" className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-lg px-4 py-3 shadow-sm">
         <MapPin size={28} className="text-green-700"  />
         <div className="flex flex-col">
